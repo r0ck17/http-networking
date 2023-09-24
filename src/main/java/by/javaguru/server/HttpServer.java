@@ -16,7 +16,7 @@ public class HttpServer {
     private final int PORT;
 
     public HttpServer(int PORT) {
-        System.out.println("[Server] init.");
+        System.out.println("[Server] init");
         this.PORT = PORT;
     }
 
@@ -91,7 +91,7 @@ public class HttpServer {
         StringBuilder headersBuilder = new StringBuilder();
         int currChar;
         int lastCh = -1;
-        System.out.println("[Server ] reading request\n");
+        System.out.println("[Server] reading request\n");
 
         while ((currChar = is.read()) != -1) {
             if (currChar == '\r' && lastCh == '\n') { // empty line, works in windows
