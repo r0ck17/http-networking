@@ -1,4 +1,4 @@
-package by.javaguru.Server.model;
+package by.javaguru.server.model;
 
 import java.util.List;
 

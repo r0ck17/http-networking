@@ -1,4 +1,4 @@
-package by.javaguru.Server.model;
+package by.javaguru.server.model;
 
 public class Employee {
     private int id;
