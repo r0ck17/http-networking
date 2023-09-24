@@ -1,4 +1,4 @@
-package by.javaguru.server.model;
+package by.javaguru.server;
 
 import java.util.List;
 
@@ -20,6 +20,24 @@ public class EmployeesSalary {
 
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
+    }
+
+    public int getTotalIncome() {
+        return employees.stream()
+                .mapToInt(Employee::getSalary)
+                .sum();
+    }
+
+    public int getTotalTax() {
+        return employees.stream()
+                .mapToInt(Employee::getTax)
+                .sum();
+    }
+
+    public int getTotalProfit() {
+        return employees.stream()
+                .mapToInt(e -> e.getSalary() - e.getTax())
+                .sum();
     }
 
     @Override
