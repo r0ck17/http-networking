@@ -9,23 +9,31 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class HttpServer {
     private final int PORT;
+    private final ExecutorService pool = Executors.newFixedThreadPool(100);
 
-    public HttpServer(int PORT) {
+    public HttpServer(int PORT, int poolSize) {
         System.out.println("[Server] init");
         this.PORT = PORT;
+
     }
 
     public void run() {
         System.out.println("[Server] is running");
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
-            Socket socket = serverSocket.accept();
-            System.out.println("[Server] accepted new connection");
-            processSocket(socket);
+            while (true) {
+                System.out.println("[Server] waiting for connection");
+                Socket socket = serverSocket.accept();
+                System.out.println("[Server] accepted new connection");
+                pool.submit(() -> processSocket(socket));
+                System.out.println("[Server] processing connection in new thread");
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -14,6 +14,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 import static java.time.format.DateTimeFormatter.*;
 
@@ -22,7 +24,7 @@ public class HttpClientRunner {
     private static final Path PATH_TO_JSON = Path.of("src", "main",
             "resources", "client-data.json");
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException, InterruptedException, ExecutionException {
         System.out.println("[Client] init");
         HttpClient httpClient = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_1_1)
@@ -35,7 +37,8 @@ public class HttpClientRunner {
                 .build();
 
         System.out.println("[Client] sending a request");
-        HttpResponse<String> response = httpClient.send(request, BodyHandlers.ofString());
+        CompletableFuture<HttpResponse<String>> httpResponseCompletableFuture = httpClient.sendAsync(request, BodyHandlers.ofString());
+        HttpResponse<String> response = httpResponseCompletableFuture.get();
         System.out.println("[Client] response received");
 
         System.out.println("\n[Client] response readers:");

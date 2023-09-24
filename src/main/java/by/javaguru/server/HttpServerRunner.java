@@ -4,7 +4,7 @@ import util.PropertiesUtil;
 
 public class HttpServerRunner {
     public static void main(String[] args) {
-        HttpServer httpServer = new HttpServer(PropertiesUtil.getInt("port"));
+        HttpServer httpServer = new HttpServer(PropertiesUtil.getInt("port"), 10);
         httpServer.run();
     }
 }
