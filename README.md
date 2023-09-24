@@ -9,6 +9,10 @@
    - Возвращает клиенту [HTML](#пример-html)
 5. Клиент сохраняет файл на диске в формате HTML
 
+### Запуск
+- Запустить сервер ([HttpServerRunner](https://github.com/r0ck17/http-networking/blob/main/src/main/java/by/javaguru/server/HttpServerRunner.java#L6-L9))
+- Запустить клиент ([HttpClientRunner](https://github.com/r0ck17/http-networking/blob/main/src/main/java/by/javaguru/client/HttpClientRunner.java#L25))
+
 ### Пример JSON
 ```json
 {
