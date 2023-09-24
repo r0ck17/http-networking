@@ -67,13 +67,15 @@ public class HttpServer {
                        <title>Salary</title>
                     </head>
                     <body>
-                    <table>
+                    <table border="2">
                        <tr>
                            <th>Total income</th>
                            <th>Total tax</th>
                            <th>Total profit</th>
+                           <th>Total employees</th>
                        </tr>
                        <tr>
+                           <td>%d</td>
                            <td>%d</td>
                            <td>%d</td>
                            <td>%d</td>
@@ -84,7 +86,8 @@ public class HttpServer {
                 """.formatted(
                 employees.getTotalIncome(),
                 employees.getTotalTax(),
-                employees.getTotalProfit());
+                employees.getTotalProfit(),
+                employees.getEmployees().size());
     }
 
     private String getHttpRequestBodyFromStream(BufferedInputStream is) throws IOException {
