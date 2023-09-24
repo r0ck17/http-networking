@@ -11,7 +11,7 @@
 
 ### Запуск
 - Запустить сервер ([HttpServerRunner](https://github.com/r0ck17/http-networking/blob/main/src/main/java/by/javaguru/server/HttpServerRunner.java#L6-L9))
-- Запустить клиент ([HttpClientRunner](https://github.com/r0ck17/http-networking/blob/main/src/main/java/by/javaguru/client/HttpClientRunner.java#L25))
+- Запустить клиент ([HttpClientRunner](https://github.com/r0ck17/http-networking/blob/main/src/main/java/by/javaguru/client/HttpClientRunner.java#L27))
 
 ### Пример JSON
 ```json
